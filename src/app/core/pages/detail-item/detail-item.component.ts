@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductModel, specificationFeaturesModel, urlPhotoProductModel } from '../../shared/model/product.model';
+import { colorProductModel, featuresProductModel, ProductModel, specificationFeaturesModel, specificationsProductModel, urlPhotoProductModel, warrantyProductModel } from '../../shared/model/product.model';
 
 @Component({
   selector: 'detail-item',
@@ -11,6 +11,12 @@ export class DetailItemComponent {
   product: ProductModel;
   urlPaths: Array<urlPhotoProductModel>;
   specificationFeatures: Array<specificationFeaturesModel>;
+  colorOptions: Array<colorProductModel>
+  warrantyOptions: Array<warrantyProductModel>;
+  featuresOptions: Array<featuresProductModel>;
+  specification: Array<specificationsProductModel>;
+  total: number;
+  tabContent: string;
 
   constructor() {
     this.initProduct();
@@ -29,9 +35,9 @@ export class DetailItemComponent {
       nameProduct: 'Momentum True Wireless 2',
       subNameProduct: 'Earbuds that put sound first',
       price: 295.95,
-      overview: '',
-      features: '',
-      containt: '',
+      overview: 'For the past 75 years, Sennheiser has put sound first. The new MOMENTUM True Wireless 2 is no different. Thanks to leading audio technology and innovation, these new earbuds deliver the best listening experience anytime, anywhere. With improved ergonomics designed for full day wearing and refined touch controls for a more personalised experience, they have been finely crafted for the most discerning listener and aim to simplify your life by enhancing your everyday.',
+      features: 'From classical to contemporary, every music genre is enhanced by the bespoke 7 mm dynamic drivers  of the new MOMENTUM True Wireless 2 earbuds thanks to its deep bass, natural mids and clear, detailed treble. Plus, you can now tailor your listening experience with built-in equalizers and enjoy amazing sound quality on your terms.',
+      containt: 'Charging Case, MTW2 Earbuds, Silicone Ear Adapter Sets (In Size XS, S, M, L), USB-A to USB-C Charging Cable.',
       colorOptions: [
         {
           idColor: 1,
@@ -139,7 +145,12 @@ export class DetailItemComponent {
 
     this.urlPaths = this.product.urlPhoto;
     this.specificationFeatures = this.product.specificationFeatures;
-
+    this.tabContent = this.product.overview;
+    this.colorOptions = this.product.colorOptions;
+    this.warrantyOptions = this.product.warrantyOptions;
+    this.featuresOptions = this.product.featuresOptions;
+    this.specification = this.product.specification;
+    this.total = this.product.price;
   }
 
 }

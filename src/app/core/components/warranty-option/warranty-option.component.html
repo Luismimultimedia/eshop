@@ -1,0 +1,11 @@
+<div class="option-selection d-flex flex-column justify-content-center w-100" *ngFor="let item of warrantyOptions">
+    <div class="d-flex justify-content-between">
+        <div class="col-10 p-0">
+            <p class="color-primary">{{item.title}}</p>
+            <p class="color-dark-gray m-0">{{item.description}}</p>
+        </div>
+        <div class="col-2 p-0 d-flex align-items-center justify-content-end">
+            <p *ngIf="item.priceWarranty" class="color-primary m-0">${{item.priceWarranty}}</p>
+        </div>
+    </div>
+</div>
