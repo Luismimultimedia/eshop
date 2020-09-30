@@ -1,0 +1,23 @@
+<div class="main h-100 d-flex">
+    <div class="col-12 h-100 d-flex p-0">
+        <div class="col-6 h-100 p-0 position-relative">
+            <div class="position-fixed">
+                <img-carousel [urlPaths]="urlPaths"></img-carousel>
+                <specification-feature [specificationFeatureItem]="specificationFeatures"></specification-feature>
+            </div>
+        </div>
+        <div class="col-6 h-100 p-0">
+            <div class="row m-0 pl-4">
+                <div class="col-12 p-0">
+                    <p class="new-release color-carmesi" *ngIf="product.new">NEW RELEASE</p>
+                    <h1 class="name-product color-primary m-0">{{product.nameProduct}}</h1>
+                    <h1 class="sub-name-product color-dark-gray">{{product.subNameProduct}}</h1>
+                    <p class="starting-at color-dark-gray m-0">STARTING AT</p>
+                    <p class="price color-primary">${{product.price}}</p>
+                </div>
+            </div>
+
+            <div class="d"></div>
+        </div>
+    </div>
+</div>

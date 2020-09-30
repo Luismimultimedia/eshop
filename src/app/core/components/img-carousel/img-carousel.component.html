@@ -1,0 +1,10 @@
+<div class="product-container-preview d-flex justify-content-center bg-white col-12">
+    <img class="img-fluid h-100" src={{urlPaths[0].urlPath}} alt="" />
+</div>
+<div class="col-12 d-flex justify-content-between p-0">
+    <div class="product-container-main d-flex justify-content-between" *ngFor="let item of urlPaths">
+        <div class="product-container d-flex justify-content-center bg-white">
+            <img class="img-fluid h-100" [src]="item.urlPath" alt="">
+        </div>
+    </div>
+</div>
