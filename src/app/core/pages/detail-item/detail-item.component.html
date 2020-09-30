@@ -1,15 +1,15 @@
-<div class="main h-100 d-flex flex-column">
+<div class="main col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0 h-100 d-flex flex-column">
 
     <div class="row m-0">
-        <div class="col-12 h-100 d-flex p-0">
-            <div class="col-6 h-100 p-0 position-relative">
-                <div class="position-fixed">
+        <!-- <div class="col-12 h-100 d-flex p-0"> -->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 p-0">
+                <div class="sticky-top">
                     <img-carousel [urlPaths]="urlPaths"></img-carousel>
                     <specification-feature [specificationFeatureItem]="specificationFeatures"></specification-feature>
                 </div>
             </div>
-            <div class="col-6 h-100 p-0">
-                <div class="row m-0 pl-4">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 h-100 p-0">
+                <div class="row m-0 pl-xl-4 pl-lg-4 pl-md-0 pl-sm-0 pl-xs-0">
                     <div class="col-12 p-0">
 
                         <p class="new-release color-carmesi" *ngIf="product.new">NEW RELEASE</p>
@@ -21,13 +21,13 @@
                             <div class="col-12 p-0">
                                 <ul class="p-0">
                                     <li>
-                                        <p class="m-0 title active-tab color-primary">Overview</p>
+                                        <p [ngClass]="{'active-tab color-primary': readOption.isOverview, 'color-dark-gray': !readOption.isOverview}" class="m-0 title" (click)="selectReadSpecification('overview')">Overview</p>
                                     </li>
                                     <li>
-                                        <p class="m-0 title color-dark-gray">Features</p>
+                                        <p [ngClass]="{'active-tab color-primary': readOption.isFeature, 'color-dark-gray': !readOption.isFeature}" class="m-0 title" (click)="selectReadSpecification('feature')">Features</p>
                                     </li>
                                     <li>
-                                        <p class="m-0 title color-dark-gray">What´s in the box?</p>
+                                        <p [ngClass]="{'active-tab color-primary': readOption.isBox, 'color-dark-gray': !readOption.isBox}" class="m-0 title" (click)="selectReadSpecification('box')">What´s in the box?</p>
                                     </li>
                                 </ul>
                                 <p class="w-100 content">{{tabContent}}</p>
@@ -42,14 +42,14 @@
                         <div class="row mx-0 content">
                             <p class="m-0 color-primary title">Would you like to add extended warranty coverage?.</p>
                             <div class="col-12 p-0">
-                                <warranty-option [warrantyOptions]="warrantyOptions"></warranty-option>
+                                <warranty-option [warrantyOptions]="warrantyOptions" (GetExtraPrice)="getExtraPrice($event)"></warranty-option>
                             </div>
                         </div>
 
                         <div class="row mx-0 content">
                             <p class="m-0 color-primary title">Features</p>
                             <div class="col-12 p-0">
-                                <feature-option [featuresOptions]="featuresOptions"></feature-option>
+                                <feature-option [featuresOptions]="featuresOptions" (GetExtraPrice)="getExtraPrice($event)"></feature-option>
                             </div>
                         </div>
 
@@ -65,38 +65,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 
     <div class="row m-0">
         <div class="push"></div>
     </div>
-    
+
     <diV class="col-12 fixed-bottom p-0">
-        <div class="col-12 footer bg-gray">
-            <div class="row d-flex justify-content-between m-0">
-                <div class="col-3 p-0">
-                    <p class="m-0 color-primary font-weight-bold">Free Shipping</p>
-                    <p class="m-0 color-dark-gray font-weight-normal">Get 2-day free shipping anywhere in North America.
-                    </p>
-                </div>
-                <div class="col-3 p-0">
-                    <p class="m-0 color-primary font-weight-bold">2 years warranty</p>
-                    <p class="m-0 color-dark-gray font-weight-normal">If anything goes wrong in the first two years,
-                        we'll be replace ir for free.</p>
-                </div>
-                <div class="col-6 p-0">
-                    <div class="row m-0">
-                        <div class="col-6 d-flex flex-column">
-                            <p class="m-0 color-primary font-weight-bold text-right fz-27">${{total}}</p>
-                            <p class="m-0 color-dark-gray font-weight-normal text-right">Need financing? Learn more</p>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-buy"> Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <footer [total]=total></footer>
     </diV>
 </div>

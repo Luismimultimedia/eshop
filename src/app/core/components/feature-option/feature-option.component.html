@@ -1,4 +1,4 @@
-<div class="option-selection d-flex flex-column justify-content-center w-100" *ngFor="let item of featuresOptions">
+<div [ngClass]="{'option-select': item?.isSelected}" class="option-selection d-flex flex-column justify-content-center w-100" *ngFor="let item of featuresSelected" (click)="selectFeatureOption(item.idFeatures)">
     <div class="d-flex justify-content-between">
         <div class="col-10 p-0">
             <p class="color-primary m-0">{{item.title}}</p>

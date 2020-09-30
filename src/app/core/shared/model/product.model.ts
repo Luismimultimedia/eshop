@@ -7,46 +7,46 @@ export interface ProductModel {
     overview: string;
     features: string;
     containt: string;
-    urlPhoto: Array<urlPhotoProductModel>;
-    colorOptions: Array<colorProductModel>;
-    warrantyOptions: Array<warrantyProductModel>;
-    featuresOptions: Array<featuresProductModel>;
-    specification: Array<specificationsProductModel>;
-    specificationFeatures: Array<specificationFeaturesModel>;
+    urlPhoto: Array<UrlPhotoProductModel>;
+    colorOptions: Array<ColorProductModel>;
+    warrantyOptions: Array<WarrantyProductModel>;
+    featuresOptions: Array<FeaturesProductModel>;
+    specification: Array<SpecificationsProductModel>;
+    specificationFeatures: Array<SpecificationFeaturesModel>;
 }
 
-export interface colorProductModel {
+export interface ColorProductModel {
     idColor: number;
     title: string;
     description: string;
     colorPrice: number;
 }
 
-export interface warrantyProductModel {
+export interface WarrantyProductModel {
     idWarranty: number;
     title: string;
     description: string;
     priceWarranty: number;
 }
 
-export interface featuresProductModel {
+export interface FeaturesProductModel {
     idFeatures: number;
     title: string;
     priceFeature: number;
 }
 
-export interface specificationsProductModel {
+export interface SpecificationsProductModel {
     idSpecifications: number;
     title: string;
     description: string;
 }
 
-export interface urlPhotoProductModel {
+export interface UrlPhotoProductModel {
     idPhoto: number;
     urlPath: string;
 }
 
-export interface specificationFeaturesModel {
+export interface SpecificationFeaturesModel {
     idSpecificationFeature: number;
     urlPath: string;
     description: string;

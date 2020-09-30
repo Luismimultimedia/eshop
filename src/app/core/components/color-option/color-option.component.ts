@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { colorProductModel } from '../../shared/model/product.model';
+import { Component, Input, Output, EventEmitter  } from '@angular/core';
+import { ColorProductModel } from '../../shared/model/product.model';
+import { ColorSelectedModel } from '../../shared/model/color-selected.model';
 
 @Component({
     selector: 'color-option',
@@ -9,16 +10,37 @@ import { colorProductModel } from '../../shared/model/product.model';
 export class ColorOptionComponent {
 
     @Input()
-    colorOptions: Array<colorProductModel>;
+    colorOptions: Array<ColorProductModel>;
+    colorSelected: Array<ColorSelectedModel>;
+    extraPrice: number;
+
+    @Output()
+    GetExtraPrice = new EventEmitter<number>();
 
 
     constructor() {
     }
 
     ngOnInit() {
-        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-        //Add 'implements OnInit' to the class.
+        const colorOptionsTemp = this.colorOptions.map((color) => color);
+        this.colorSelected = colorOptionsTemp.map((color: ColorProductModel, i) => {
+            let isSelected = false;
+            if (i === 0){
+                isSelected = true;
+            }
+            return {...color, isSelected};
+        });
+    }
 
+    selectColorOption(id: number) {
+        this.colorSelected = this.colorSelected.map(color => {
+            color.isSelected = false;
+            if (color.idColor === id) {
+                this.extraPrice = color.colorPrice;
+                color.isSelected = true;
+            }
+            return color;
+        });
     }
 
 

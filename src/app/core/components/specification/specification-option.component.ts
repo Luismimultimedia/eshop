@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { specificationsProductModel } from '../../shared/model/product.model';
+import { SpecificationsProductModel } from '../../shared/model/product.model';
 
 @Component({
     selector: 'specification-option',
@@ -9,7 +9,7 @@ import { specificationsProductModel } from '../../shared/model/product.model';
 export class SpecificationOptionComponent {
 
     @Input()
-    specification: Array<specificationsProductModel>;
+    specification: Array<SpecificationsProductModel>;
 
     constructor() {
     }

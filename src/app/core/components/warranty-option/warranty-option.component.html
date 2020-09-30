@@ -1,4 +1,6 @@
-<div class="option-selection d-flex flex-column justify-content-center w-100" *ngFor="let item of warrantyOptions">
+<div [ngClass]="{'option-select': item?.isSelected}"
+    class="option-selection d-flex flex-column justify-content-center w-100" *ngFor="let item of warrantySelected"
+    (click)="selectWarrantyOption(item.idWarranty)">
     <div class="d-flex justify-content-between">
         <div class="col-10 p-0">
             <p class="color-primary">{{item.title}}</p>

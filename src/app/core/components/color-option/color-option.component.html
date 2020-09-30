@@ -1,5 +1,5 @@
-<div class="col-12 d-flex justify-content-between p-0">
-    <div class="option-selection d-flex flex-column justify-content-center px-3" *ngFor="let item of colorOptions">
+<div class="col-12 d-flex flex-xl-row flex-lg-row flex-md-row flex-column justify-content-between p-0">
+    <div [ngClass]="{'option-select': item?.isSelected}" class="option-selection d-flex flex-column justify-content-center px-3" *ngFor="let item of colorSelected" (click)=selectColorOption(item.idColor)>
         <p class="color-primary">{{item.title}}</p>
         <p class="color-dark-gray">{{item.description}}</p>
     </div>

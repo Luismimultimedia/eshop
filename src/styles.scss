@@ -39,7 +39,7 @@ li {
 }
 
 .bg-gray {
-    background-color: #F5F5F7;
+    background-color: #f5f5f7;
 }
 
 .product-container-preview {
@@ -58,9 +58,21 @@ li {
         border: 1px solid #b6bcc6;
     }
 
-    &.active {
+    &.option-select {
         border: 1px solid #1e96d4;
     }
+}
+
+.img-preview {
+    object-fit: contain;
+    height: 337px;
+    width: 543px;
+}
+
+.img-options {
+    object-fit: contain;
+    height: 100px;
+    width: 187px;
 }
 
 .option-selection {
@@ -71,10 +83,6 @@ li {
     margin-top: 16px;
     &:hover {
         border: 1px solid #b6bcc6;
-    }
-
-    &:active {
-        border: 1px solid #1e96d4;
     }
     p {
         font-size: 14px;
@@ -87,6 +95,9 @@ li {
         p {
             font-weight: 400;
         }
+    }
+    &.option-select {
+        border: 1px solid #1e96d4;
     }
 }
 
@@ -143,14 +154,14 @@ li {
 }
 
 .specification {
-    border-top: 1px solid #EEEFF2;
-    border-bottom: 1px solid #EEEFF2;
+    border-top: 1px solid #eeeff2;
+    border-bottom: 1px solid #eeeff2;
     padding: 17px 0;
 }
 
 .footer {
     padding: 40px 5%;
-    border-top: 1px solid #D2D2D7;
+    border-top: 1px solid #d2d2d7;
 }
 
 .footer-fix {
@@ -162,21 +173,146 @@ li {
 }
 
 .btn-buy {
-    background-color: #1E96D4;
+    background-color: #1e96d4;
     color: white;
     font-size: 16px;
     padding: 16px 24px;
-    &:hover{
-        background-color: #66BEEB;
+    &:hover {
+        background-color: #66beeb;
         color: white;
     }
-    &:focus{
-        background-color: #1E96D4;
+    &:focus {
+        background-color: #1e96d4;
         color: white;
-        border: 1px solid #D8DCE0;
+        border: 1px solid #d8dce0;
     }
+}
+
+.shiping-section {
+    display: block;
+}
+
+.warranty-footer-section {
+    display: block;
 }
 
 .push {
     height: 150px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    li {
+        margin-right: 4px;
+        cursor: pointer;
+        p:hover {
+            color: #111111;
+            transition: 1s;
+        }
+    }
+
+    #container-main {
+        padding: 0 16px;
+    }
+
+    .shiping-section {
+        display: none;
+    }
+
+    .warranty-footer-section {
+        display: none;
+    }
+
+    .total-price-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .option-selection {
+        border: 1px solid #eeeff2;
+        border-radius: 8px;
+        width: 100%;
+        padding: 24px;
+        margin-top: 16px;
+        &:hover {
+            border: 1px solid #b6bcc6;
+        }
+        p {
+            font-size: 14px;
+            font-weight: bold;
+            &:nth-child(2) {
+                font-weight: 400;
+            }
+        }
+        & div {
+            p {
+                font-weight: 400;
+            }
+        }
+        &.option-select {
+            border: 1px solid #1e96d4;
+        }
+    }
+
+    .title {
+        font-size: 19px;
+    }
+
+    .content {
+        margin-bottom: 52px;
+    }
+
+    .product-container-preview {
+        height: 183px;
+    }
+
+    .product-container {
+        height: 44px;
+    }
+
+    .img-options {
+        object-fit: contain;
+        height: 44px;
+    }
+
+    .img-preview {
+        object-fit: contain;
+        height: 183px;
+        width: 543px;
+    }
+
+    .new-release {
+        margin: 20px 0 8px;
+    }
+
+    .name-product {
+        font-size: 33px;
+    }
+
+    .sub-name-product {
+        font-size: 23px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+    li {
+        margin-right: 5px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .specification-feature {
+        height: 63px;
+        font-size: 12px;
+        font-weight: 400;
+        &:nth-child(2) {
+            margin: 0;
+        }
+    }
+
+    .warranty-footer-section {
+        display: none;
+    }
 }

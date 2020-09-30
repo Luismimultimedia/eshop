@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { colorProductModel, featuresProductModel, ProductModel, specificationFeaturesModel, specificationsProductModel, urlPhotoProductModel, warrantyProductModel } from '../../shared/model/product.model';
+import { Component, OnInit } from '@angular/core';
+import { ColorProductModel, FeaturesProductModel, ProductModel, SpecificationFeaturesModel, SpecificationsProductModel, UrlPhotoProductModel, WarrantyProductModel } from '../../shared/model/product.model';
 
 @Component({
   selector: 'detail-item',
@@ -9,23 +9,73 @@ import { colorProductModel, featuresProductModel, ProductModel, specificationFea
 export class DetailItemComponent {
 
   product: ProductModel;
-  urlPaths: Array<urlPhotoProductModel>;
-  specificationFeatures: Array<specificationFeaturesModel>;
-  colorOptions: Array<colorProductModel>
-  warrantyOptions: Array<warrantyProductModel>;
-  featuresOptions: Array<featuresProductModel>;
-  specification: Array<specificationsProductModel>;
+  urlPaths: Array<UrlPhotoProductModel>;
+  specificationFeatures: Array<SpecificationFeaturesModel>;
+  colorOptions: Array<ColorProductModel>
+  warrantyOptions: Array<WarrantyProductModel>;
+  featuresOptions: Array<FeaturesProductModel>;
+  specification: Array<SpecificationsProductModel>;
+  readOption: any = {
+    isOverview: true,
+    isFeature: false,
+    isBox: false,
+  };
   total: number;
   tabContent: string;
+  extraPriceColor = 0;
+  extraPriceWarranty = 0;
+  extraPriceFeature = 0;
+
 
   constructor() {
     this.initProduct();
   }
 
   ngOnInit() {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
 
+  }
+
+  selectReadSpecification(spec: string) {
+    switch (spec) {
+      case 'overview':
+        this.readOption = { isOverview: true, isFeature: false, isBox: false };
+        this.tabContent = this.product.overview;
+        break;
+      case 'feature':
+        this.readOption = { isOverview: false, isFeature: true, isBox: false };
+        this.tabContent = this.product.features;
+        break;
+      case 'box':
+        this.readOption = { isOverview: false, isFeature: false, isBox: true };
+        this.tabContent = this.product.containt;
+        break;
+    }
+  }
+
+  getExtraPrice(data) {
+    switch (data.name) {
+      case 'color':
+        if (this.extraPriceColor !== data.extraPrice) {
+          this.total -= this.extraPriceColor;
+          this.total += data.extraPrice;
+          this.extraPriceColor = data.extraPrice;
+        }
+        break;
+      case 'warranty':
+        if (this.extraPriceWarranty !== data.extraPrice) {
+          this.total -= this.extraPriceWarranty;
+          this.total += data.extraPrice;
+          this.extraPriceWarranty = data.extraPrice;
+        }
+        break;
+      case 'features':
+        if (this.extraPriceFeature !== data.extraPrice) {
+          this.total -= this.extraPriceFeature;
+          this.total += data.extraPrice;
+          this.extraPriceFeature = data.extraPrice;
+        }
+        break;
+    }
   }
 
   initProduct() {
@@ -150,7 +200,7 @@ export class DetailItemComponent {
     this.warrantyOptions = this.product.warrantyOptions;
     this.featuresOptions = this.product.featuresOptions;
     this.specification = this.product.specification;
-    this.total = this.product.price;
+    this.total = Number(this.product.price);
   }
 
 }
