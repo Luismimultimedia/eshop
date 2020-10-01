@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { UrlPhotoProductModel } from '../../shared/model/product.model';
 import { UrlPhotoSelectedModel } from '../../shared/model/url-photo-selected.model';
 
@@ -8,6 +8,18 @@ import { UrlPhotoSelectedModel } from '../../shared/model/url-photo-selected.mod
     styleUrls: ['./img-carousel.component.scss']
 })
 export class ImgCarouselComponent {
+
+    @HostListener('document:keydown.ArrowLeft', ['$event']) onKeydownHandlerLeft(event: KeyboardEvent) {
+        const photoTemp = this.urlPathsSelection.filter(photo => photo.isSelected);
+        const i = this.urlPathsSelection.length;
+        (photoTemp[0].idPhoto === 1) ? this.selectImg((i)) : this.selectImg((photoTemp[0].idPhoto - 1));
+    }
+
+    @HostListener('document:keydown.ArrowRight', ['$event']) onKeydownHandlerRight(event: KeyboardEvent) {
+        const photoTemp = this.urlPathsSelection.filter(photo => photo.isSelected);
+        const i = this.urlPathsSelection.length;
+        (photoTemp[0].idPhoto === (i)) ? this.selectImg(1) : this.selectImg((photoTemp[0].idPhoto + 1));
+    }
 
     @Input()
     urlPaths: Array<UrlPhotoProductModel>;
@@ -21,11 +33,11 @@ export class ImgCarouselComponent {
         const urlPathsTemp = this.urlPaths.map((photo) => photo);
         this.urlPathsSelection = urlPathsTemp.map((photo: UrlPhotoProductModel, i) => {
             let isSelected = false;
-            if (i === 0){
+            if (i === 0) {
                 this.urlPreview = photo.urlPath;
                 isSelected = true;
             }
-            return {...photo, isSelected};
+            return { ...photo, isSelected };
         });
     }
 
@@ -39,6 +51,5 @@ export class ImgCarouselComponent {
             return photo;
         });
     }
-
 
 }

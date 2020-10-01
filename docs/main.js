@@ -457,7 +457,7 @@ class HeaderComponent {
     }
 }
 HeaderComponent.ɵfac = function HeaderComponent_Factory(t) { return new (t || HeaderComponent)(); };
-HeaderComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HeaderComponent, selectors: [["header"]], decls: 3, vars: 0, consts: [[1, "col-xl-12", "col-lg-12", "col-md-12", "col-sm-12", "col-xs-12", "d-flex", "flex-column", "align-items-center", "pt-1"], ["src", "../assets/img/serempreLogo.png"], [1, "w-100"]], template: function HeaderComponent_Template(rf, ctx) { if (rf & 1) {
+HeaderComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HeaderComponent, selectors: [["header"]], decls: 3, vars: 0, consts: [[1, "col-xl-12", "col-lg-12", "col-md-12", "col-sm-12", "col-xs-12", "d-flex", "flex-column", "align-items-center", "pt-1"], ["src", "./assets/img/serempreLogo.png"], [1, "w-100"]], template: function HeaderComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "hr", 2);
@@ -498,7 +498,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 4, vars: 0, consts: [["id", "container-main", 1, "col-12", "h-100"], [1, "col-12", "h-100"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 4, vars: 0, consts: [["id", "container-main", 1, "col-12", "h-100", "fade-in"], [1, "col-12", "h-100"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "header");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
@@ -706,6 +706,16 @@ function ImgCarouselComponent_div_5_Template(rf, ctx) { if (rf & 1) {
 class ImgCarouselComponent {
     constructor() {
     }
+    onKeydownHandlerLeft(event) {
+        const photoTemp = this.urlPathsSelection.filter(photo => photo.isSelected);
+        const i = this.urlPathsSelection.length;
+        (photoTemp[0].idPhoto === 1) ? this.selectImg((i)) : this.selectImg((photoTemp[0].idPhoto - 1));
+    }
+    onKeydownHandlerRight(event) {
+        const photoTemp = this.urlPathsSelection.filter(photo => photo.isSelected);
+        const i = this.urlPathsSelection.length;
+        (photoTemp[0].idPhoto === (i)) ? this.selectImg(1) : this.selectImg((photoTemp[0].idPhoto + 1));
+    }
     ngOnInit() {
         const urlPathsTemp = this.urlPaths.map((photo) => photo);
         this.urlPathsSelection = urlPathsTemp.map((photo, i) => {
@@ -729,7 +739,9 @@ class ImgCarouselComponent {
     }
 }
 ImgCarouselComponent.ɵfac = function ImgCarouselComponent_Factory(t) { return new (t || ImgCarouselComponent)(); };
-ImgCarouselComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ImgCarouselComponent, selectors: [["img-carousel"]], inputs: { urlPaths: "urlPaths" }, decls: 6, vars: 2, consts: [[1, "row", "m-0"], [1, "product-container-preview", "overflow-hidden", "d-flex", "justify-content-center", "bg-white", "col-12", "p-0"], ["alt", "photo preview", 1, "img-preview", "p-0", 3, "src"], [1, "col-12", "d-flex", "justify-content-between", "p-0"], ["class", "d-flex justify-content-between p-0", 3, "click", 4, "ngFor", "ngForOf"], [1, "d-flex", "justify-content-between", "p-0", 3, "click"], [1, "product-container", "overflow-hidden", "d-flex", "justify-content-center", "bg-white", "col-12", 3, "ngClass"], ["alt", "photo", 1, "img-options", 3, "src"]], template: function ImgCarouselComponent_Template(rf, ctx) { if (rf & 1) {
+ImgCarouselComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ImgCarouselComponent, selectors: [["img-carousel"]], hostBindings: function ImgCarouselComponent_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.ArrowLeft", function ImgCarouselComponent_keydown_ArrowLeft_HostBindingHandler($event) { return ctx.onKeydownHandlerLeft($event); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveDocument"])("keydown.ArrowRight", function ImgCarouselComponent_keydown_ArrowRight_HostBindingHandler($event) { return ctx.onKeydownHandlerRight($event); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveDocument"]);
+    } }, inputs: { urlPaths: "urlPaths" }, decls: 6, vars: 2, consts: [[1, "row", "m-0"], [1, "product-container-preview", "overflow-hidden", "d-flex", "justify-content-center", "bg-white", "col-12", "p-0"], ["alt", "photo preview", 1, "img-preview", "p-0", 3, "src"], [1, "col-12", "d-flex", "justify-content-between", "p-0"], ["class", "d-flex justify-content-between p-0", 3, "click", 4, "ngFor", "ngForOf"], [1, "d-flex", "justify-content-between", "p-0", 3, "click"], [1, "product-container", "overflow-hidden", "d-flex", "justify-content-center", "bg-white", "col-12", 3, "ngClass"], ["alt", "photo", 1, "img-options", 3, "src"]], template: function ImgCarouselComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 2);
@@ -753,7 +765,13 @@ ImgCarouselComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
                 templateUrl: './img-carousel.component.html',
                 styleUrls: ['./img-carousel.component.scss']
             }]
-    }], function () { return []; }, { urlPaths: [{
+    }], function () { return []; }, { onKeydownHandlerLeft: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ['document:keydown.ArrowLeft', ['$event']]
+        }], onKeydownHandlerRight: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ['document:keydown.ArrowRight', ['$event']]
+        }], urlPaths: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }] }); })();
 
@@ -943,7 +961,6 @@ class DetailItemComponent {
             this.featuresOptions = this.product.featuresOptions;
             this.specification = this.product.specification;
             this.total = Number(this.product.price);
-            console.log('Diosito ayudame', this.product);
         });
     }
     selectReadSpecification(spec) {
@@ -1105,7 +1122,7 @@ class DetailItemComponent {
     }
 }
 DetailItemComponent.ɵfac = function DetailItemComponent_Factory(t) { return new (t || DetailItemComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_detail_item_service__WEBPACK_IMPORTED_MODULE_2__["DetailProductService"])); };
-DetailItemComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: DetailItemComponent, selectors: [["detail-item"]], decls: 13, vars: 4, consts: [[1, "main", "col-xl-12", "col-lg-12", "col-md-12", "col-sm-12", "col-xs-12", "p-0", "h-100", "d-flex", "flex-column"], [1, "row", "m-0"], [1, "col-xl-6", "col-lg-6", "col-md-12", "col-sm-12", "col-xs-12", "p-0"], [1, "sticky-top"], [3, "urlPaths", 4, "ngIf"], [3, "specificationFeatureItem", 4, "ngIf"], [1, "col-xl-6", "col-lg-6", "col-md-12", "col-sm-12", "col-xs-12", "h-100", "p-0"], [1, "row", "m-0", "pl-xl-4", "pl-lg-4", "pl-md-0", "pl-sm-0", "pl-xs-0"], ["class", "col-12 p-0", 4, "ngIf"], [1, "push"], [1, "col-12", "fixed-bottom", "p-0"], [3, "total"], [3, "urlPaths"], [3, "specificationFeatureItem"], [1, "col-12", "p-0"], ["class", "new-release color-carmesi", 4, "ngIf"], [1, "name-product", "color-primary", "m-0"], [1, "sub-name-product", "color-dark-gray"], [1, "starting-at", "color-dark-gray", "m-0"], [1, "price", "color-primary"], [1, "p-0"], [1, "m-0", "title", 3, "ngClass", "click"], [1, "w-100", "content"], [1, "row", "mx-0", "content"], [1, "m-0", "color-primary", "title"], [3, "colorOptions"], [3, "warrantyOptions", "GetExtraPrice"], [3, "featuresOptions", "GetExtraPrice"], [1, "col-12", "p-0", "mt-3"], [3, "specification"], [1, "new-release", "color-carmesi"]], template: function DetailItemComponent_Template(rf, ctx) { if (rf & 1) {
+DetailItemComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: DetailItemComponent, selectors: [["detail-item"]], decls: 13, vars: 4, consts: [[1, "main", "col-xl-12", "col-lg-12", "col-md-12", "col-sm-12", "col-xs-12", "p-0", "h-100", "d-flex", "flex-column"], [1, "row", "m-0"], [1, "col-xl-6", "col-lg-6", "col-md-12", "col-sm-12", "col-xs-12", "p-0", "fade-in"], [1, "sticky-top"], [3, "urlPaths", 4, "ngIf"], [3, "specificationFeatureItem", 4, "ngIf"], [1, "col-xl-6", "col-lg-6", "col-md-12", "col-sm-12", "col-xs-12", "h-100", "p-0", "fade-in"], [1, "row", "m-0", "pl-xl-4", "pl-lg-4", "pl-md-0", "pl-sm-0", "pl-xs-0"], ["class", "col-12 p-0", 4, "ngIf"], [1, "push"], [1, "col-12", "fixed-bottom", "p-0"], [3, "total"], [3, "urlPaths"], [3, "specificationFeatureItem"], [1, "col-12", "p-0"], ["class", "new-release color-carmesi", 4, "ngIf"], [1, "name-product", "color-primary", "m-0"], [1, "sub-name-product", "color-dark-gray"], [1, "starting-at", "color-dark-gray", "m-0"], [1, "price", "color-primary"], [1, "p-0"], [1, "m-0", "title", 3, "ngClass", "click"], [1, "w-100", "content"], [1, "row", "mx-0", "content"], [1, "m-0", "color-primary", "title"], [3, "colorOptions"], [3, "warrantyOptions", "GetExtraPrice"], [3, "featuresOptions", "GetExtraPrice"], [1, "col-12", "p-0", "mt-3"], [3, "specification"], [1, "new-release", "color-carmesi"]], template: function DetailItemComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);

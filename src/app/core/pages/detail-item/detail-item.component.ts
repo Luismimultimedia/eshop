@@ -55,7 +55,6 @@ export class DetailItemComponent {
       this.featuresOptions = this.product.featuresOptions;
       this.specification = this.product.specification;
       this.total = Number(this.product.price);
-      console.log('Diosito ayudame', this.product);
     });
   }
 
