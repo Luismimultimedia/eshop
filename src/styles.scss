@@ -51,8 +51,8 @@ li {
 .product-container {
     border: 1px solid #eeeff2;
     border-radius: 8px;
-    width: 187px;
-    height: 100px;
+    max-width: 187px;
+    max-height: 100px;
     margin: 16px 0 0 0;
     &:hover {
         border: 1px solid #b6bcc6;
@@ -267,11 +267,13 @@ li {
     }
 
     .product-container {
+        width: 90px;
         height: 44px;
     }
 
     .img-options {
         object-fit: contain;
+        width: 90px;
         height: 44px;
     }
 
@@ -294,7 +296,7 @@ li {
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
     li {
         margin-right: 5px;
     }
@@ -315,4 +317,22 @@ li {
     .warranty-footer-section {
         display: none;
     }
+
+    .product-container {
+        width: 128px;
+    }
+
+    .img-options {
+        object-fit: contain;
+        width: 128px;
+    }
 }
+
+@media (min-width: 1280px) {     .product-container {
+    width: 170px;
+}
+
+.img-options {
+    object-fit: contain;
+    width: 170px;
+} }

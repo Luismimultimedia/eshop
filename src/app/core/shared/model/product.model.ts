@@ -1,4 +1,5 @@
 export interface ProductModel {
+    key:string;
     idPorduct: number;
     new: boolean;
     nameProduct: string;

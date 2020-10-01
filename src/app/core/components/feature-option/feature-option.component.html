@@ -4,7 +4,7 @@
             <p class="color-primary m-0">{{item.title}}</p>
         </div>
         <div class="col-2 p-0 d-flex align-items-center justify-content-end">
-            <p *ngIf="item.priceFeature" class="color-primary m-0">${{item.priceFeature}}</p>
+            <p *ngIf="item.priceFeature" class="color-primary m-0">+ ${{item.priceFeature}}</p>
         </div>
     </div>
 </div>

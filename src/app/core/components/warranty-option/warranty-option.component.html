@@ -7,7 +7,7 @@
             <p class="color-dark-gray m-0">{{item.description}}</p>
         </div>
         <div class="col-2 p-0 d-flex align-items-center justify-content-end">
-            <p *ngIf="item.priceWarranty" class="color-primary m-0">${{item.priceWarranty}}</p>
+            <p *ngIf="item.priceWarranty" class="color-primary m-0">+ ${{item.priceWarranty}}</p>
         </div>
     </div>
 </div>

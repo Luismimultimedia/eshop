@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { ColorProductModel, FeaturesProductModel, ProductModel, SpecificationFeaturesModel, SpecificationsProductModel, UrlPhotoProductModel, WarrantyProductModel } from '../../shared/model/product.model';
+import { DetailProductService } from './detail-item.service';
 
 @Component({
   selector: 'detail-item',
@@ -9,6 +11,7 @@ import { ColorProductModel, FeaturesProductModel, ProductModel, SpecificationFea
 export class DetailItemComponent {
 
   product: ProductModel;
+  products: any;
   urlPaths: Array<UrlPhotoProductModel>;
   specificationFeatures: Array<SpecificationFeaturesModel>;
   colorOptions: Array<ColorProductModel>
@@ -27,12 +30,33 @@ export class DetailItemComponent {
   extraPriceFeature = 0;
 
 
-  constructor() {
-    this.initProduct();
+  constructor(private detailProductService: DetailProductService) {
+    // this.initProduct();
   }
 
   ngOnInit() {
+    this.getProduct();
+  }
 
+  getProduct() {
+    this.detailProductService.getProduct().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.doc.id, ...c.payload.doc.data() })
+        )
+      )
+    ).subscribe(product => {
+      this.product = product[0];
+      this.urlPaths = this.product.urlPhoto;
+      this.specificationFeatures = this.product.specificationFeatures;
+      this.tabContent = this.product.overview;
+      this.colorOptions = this.product.colorOptions;
+      this.warrantyOptions = this.product.warrantyOptions;
+      this.featuresOptions = this.product.featuresOptions;
+      this.specification = this.product.specification;
+      this.total = Number(this.product.price);
+      console.log('Diosito ayudame', this.product);
+    });
   }
 
   selectReadSpecification(spec: string) {
@@ -80,6 +104,7 @@ export class DetailItemComponent {
 
   initProduct() {
     this.product = {
+      key: 'key',
       idPorduct: 1,
       new: true,
       nameProduct: 'Momentum True Wireless 2',
@@ -119,13 +144,13 @@ export class DetailItemComponent {
       featuresOptions: [
         {
           idFeatures: 1,
-          title: '2 years coverage',
+          title: 'Voice Assistant support',
           priceFeature: 0
         },
         {
           idFeatures: 2,
-          title: '3 years coverage',
-          priceFeature: 75
+          title: 'customizable controls',
+          priceFeature: 25
         }
       ],
       specification: [
@@ -191,16 +216,7 @@ export class DetailItemComponent {
           description: 'Active Noise Cancellation'
         }
       ]
-    }
-
-    this.urlPaths = this.product.urlPhoto;
-    this.specificationFeatures = this.product.specificationFeatures;
-    this.tabContent = this.product.overview;
-    this.colorOptions = this.product.colorOptions;
-    this.warrantyOptions = this.product.warrantyOptions;
-    this.featuresOptions = this.product.featuresOptions;
-    this.specification = this.product.specification;
-    this.total = Number(this.product.price);
+    };
   }
 
 }

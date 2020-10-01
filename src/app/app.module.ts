@@ -5,6 +5,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CONTAINERS } from './core/shared/index.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment';
+import { SERVICES } from './core/shared/service.component';
 
 @NgModule({
   declarations: [
@@ -14,9 +18,14 @@ import { CONTAINERS } from './core/shared/index.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    [...SERVICES]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
