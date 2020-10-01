@@ -20,7 +20,7 @@ git clone https://github.com/Luismimultimedia/eshop
 First open the project and the in a terminal write git checkout dev
 
 ##### 3. Install node modules
-npm install or npm i, its possible that after npm is intalled angular will ask you if you want to share analitics data
+npm install or npm i, its possible that after npm is intalled angular will ask you if you want to share analitycs data
 
 ##### 4. Install node-sass
 npm i node-sass
