@@ -1,26 +1,32 @@
-# Eshop
+# Eshop (Test Serempre)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
+This is a project developmented by Luis Miguel González to make the technical test for the company Serempre, this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
 
-## Development server
+**What was the hardest thing of this test?**
+As Front end developers we use to work with layouts frameworks that really help a lot to make the components, but when you have to face a project using "hand-made" functionalities and layaouts it became hard, and it became harder when you have to be a "pixel perfect" and work with media querys to fix the responsive problems, also i you dont have a solid fundation of javascript. In this project i implemented Cloud Firestore as a service of backend to store and bring the detail product data of the project.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Host
+The web page is host by GitHub Pages, you can visit it with the next Link: https://luismimultimedia.github.io/eshop/.
 
-## Code scaffolding
+## How to run the project?
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+*Before you do the next step, make sure to have install angular, if you havent please install it*
+npm install -g @angular/cli
 
-## Build
+##### 1. Clone the project
+git clone https://github.com/Luismimultimedia/eshop
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+##### 2. Change in to dev branch
+git checkout dev
 
-## Running unit tests
+##### 3. Install node modules
+npm install or npm i
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+##### 4. Install node-sass
+npm i node-sass
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+##### 5. Run the project
+npm start
 
 ## Further help
 
