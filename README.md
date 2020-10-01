@@ -6,7 +6,7 @@ This is a project developmented by Luis Miguel González to make the technical t
 As Front end developers we use to work with layouts frameworks that really help a lot to make the components, but when you have to face a project using "hand-made" functionalities and layaouts it became hard, and it became harder when you have to be a "pixel perfect" and work with media querys to fix the responsive problems, also i you dont have a solid fundation of javascript. In this project i implemented Cloud Firestore as a service of backend to store and bring the detail product data of the project.
 
 **Good to know**
-Al the components in the project and the functionalities were made "hand-made", i only use bootstrap to use the col but i mixed with scss to be more accurate with the layout, is resposive so try it in other devices. To persist the data i used Cloud Firebase. And finally you can change the image carousel pressing the arrow left and Right keys to be more accessible.
+All the components in the project and the functionalities were made "hand-made", i only use bootstrap to use the col but i mixed with scss to be more accurate with the layout, is resposive so try it in other devices. To persist the data i used Cloud Firebase. And finally you can change the image carousel pressing the arrow left and Right keys to be more accessible.
 
 ## Host
 The web page is host by GitHub Pages, you can visit it with the next Link: https://luismimultimedia.github.io/eshop/.
